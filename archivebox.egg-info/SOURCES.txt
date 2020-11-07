@@ -86,6 +86,7 @@ archivebox/parsers/generic_txt.py
 archivebox/parsers/medium_rss.py
 archivebox/parsers/netscape_html.py
 archivebox/parsers/pinboard_rss.py
+archivebox/parsers/pocket_api.py
 archivebox/parsers/pocket_html.py
 archivebox/parsers/shaarli_rss.py
 archivebox/parsers/wallabag_atom.py
