@@ -98,12 +98,12 @@ def should_parse_as_pocket_api(text: str) -> bool:
     return text.startswith('pocket://')
 
 @enforce_types
-def parse_pocket_api_export(html_file: IO[str], **_kwargs) -> Iterable[Link]:
+def parse_pocket_api_export(input_buffer: IO[str], **_kwargs) -> Iterable[Link]:
     """Parse bookmarks from the Pocket API"""
 
-    html_file.seek(0)
+    input_buffer.seek(0)
     pattern = re.compile("^pocket:\/\/(\w+)")
-    for line in html_file:
+    for line in input_buffer:
       if should_parse_as_pocket_api(line):
         from ..config import (
           POCKET_CONSUMER_KEY,
@@ -117,4 +117,3 @@ def parse_pocket_api_export(html_file: IO[str], **_kwargs) -> Iterable[Link]:
           yield link_from_article(article, sources=[line])
 
         write_since(username, api.last_since)
-
